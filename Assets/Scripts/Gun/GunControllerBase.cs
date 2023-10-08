@@ -14,7 +14,19 @@ public abstract class GunControllerBase : MonoBehaviour
     [SerializeField] protected float _speed, _damage, _lifeTime;
 
     protected Vector2 movement;
+    [SerializeField] protected float _timer = 1f;
+    protected float _countdownTime;
 
+    private void Start()
+    {
+        _countdownTime = _timer;
+
+    }
+
+    private void Update()
+    {
+        _countdownTime -= Time.deltaTime;
+    }
     public void Init(PlayerController player)
     {
         this._player = player;
