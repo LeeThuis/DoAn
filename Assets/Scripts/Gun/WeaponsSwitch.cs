@@ -12,6 +12,8 @@ public class WeaponsSwitch : MonoBehaviour
 
     private int totalWeapons = 1;
 
+    private PlayerController player;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,31 +29,38 @@ public class WeaponsSwitch : MonoBehaviour
         weapons[0].SetActive(true);
         curentWeapon = weapons[0];
         currentWeaponIndex = 0;
+
+        player = FindObjectOfType<PlayerController>();
+        if (player)
+        {
+            player.SwitchGun(weapons[0].GetComponent<GunControllerBase>());
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E))
+        if(Input.GetKeyDown(KeyCode.E) && currentWeaponIndex < totalWeapons -1)
         {
-            if(currentWeaponIndex < totalWeapons - 1)
-            {
-                weapons[currentWeaponIndex].SetActive(false);
-                currentWeaponIndex++;
-                weapons[currentWeaponIndex].SetActive(true);
-                curentWeapon = weapons[currentWeaponIndex];
-            }
+            SwitchWeapon(1);
         }
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        else if (Input.GetKeyDown(KeyCode.Q) && currentWeaponIndex > 0)
         {
-            if (currentWeaponIndex > 0)
-            {
-                weapons[currentWeaponIndex].SetActive(false);
-                currentWeaponIndex--;
-                weapons[currentWeaponIndex].SetActive(true);
-                curentWeapon = weapons[currentWeaponIndex];
-            }
+            SwitchWeapon(-1);
+        }
+    }
+
+    private void SwitchWeapon(int direction)
+    {
+        weapons[currentWeaponIndex].SetActive(false);
+        currentWeaponIndex += direction;
+        weapons[currentWeaponIndex].SetActive(true);
+        curentWeapon = weapons[currentWeaponIndex];
+
+        if (player)
+        {
+            player.SwitchGun(weapons[currentWeaponIndex].GetComponent<GunControllerBase>());
         }
     }
 }

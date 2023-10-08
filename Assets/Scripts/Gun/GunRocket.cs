@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class GunRocket : GunControllerBase
 {
-    [SerializeField] protected BulletBase _bullet;
+    [SerializeField] protected GameObject _bullet;
 
     public override void Fire()
     {
-        BulletBase g = ObjectPooling.Instant.GetComp<BulletBase>(_bullet.gameObject);
+        BulletBase g = ObjectPooling.Instant.GetComp<BulletBase>(_bullet);
         Vector3 dir = (InputManager.Instant._mousePosition - _gun.transform.position).normalized;
         float rot = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         g.transform.rotation = Quaternion.Euler(0f, 0f, rot);

@@ -71,4 +71,9 @@ public class PlayerController : MonoBehaviour
             _gun.Fire();
         }
     }
+
+    public void SwitchGun(GunControllerBase newGun)
+    {
+        _gun = newGun;
+    }
 }
