@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 
 public class EnemyController : EnemyManager , IGetHit
 {
+    [SerializeField] private Slider _slider;
+
     [SerializeField] float _HP = 100f;
     [SerializeField] float dmg = 50f;
-    [SerializeField] public EnemyHealth _healthBar;
 
     [SerializeField] public bool isActive;
     [SerializeField] float _speed = 3f;
@@ -23,7 +25,6 @@ public class EnemyController : EnemyManager , IGetHit
     {
         _rd = this.GetComponent<Rigidbody2D>();
         _enemyAnimator = this.GetComponentInChildren<Animator>();
-        _healthBar = this.GetComponentInChildren<EnemyHealth>();
     }
 
     public void Init(float Hp, float Dmg)
@@ -60,18 +61,21 @@ public class EnemyController : EnemyManager , IGetHit
     public void GetHit(float dmg)
     {
         this._HP -= dmg;
-        _healthBar.UpdateHealthBar(this._HP);
+        UpdateHealthBar(this._HP);
         if (this._HP <= 0)
         {
             this.gameObject.SetActive(false);
             GameManager.Instant.Kill++;
         }
-            
-        //Invoke("SetActive", 5f);
     }
 
     public void SetActive()
     {
         this.gameObject.SetActive(false);
+    }
+
+    public void UpdateHealthBar(float maxValue)
+    {
+        _slider.value = maxValue;
     }
 }

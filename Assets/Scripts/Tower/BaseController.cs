@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.UI;
 
 public class BaseController : MonoBehaviour , IGetHit
 {
@@ -11,11 +13,13 @@ public class BaseController : MonoBehaviour , IGetHit
     private float _flashCounter = 0;
     private SpriteRenderer _baseRenderer;
 
-    [SerializeField] Rigidbody2D _rigiBase;
-
-    private void Awake()
+    public void Init()
     {
-        _rigiBase = this.GetComponent<Rigidbody2D>();
+        _Hp = 1000;
+    }
+
+    private void Start()
+    {
         _baseRenderer = this.GetComponentInChildren<SpriteRenderer>();
     }
 
@@ -70,7 +74,8 @@ public class BaseController : MonoBehaviour , IGetHit
 
         if (this._Hp <= 0)
         {
-            Observer.Instant.AddListener("EndGame", null);
+            Time.timeScale = 0f;
+            //Observer.Instant.AddListener("EndGame", null);
             UIManager.Instant.GameOver();
         }
     }

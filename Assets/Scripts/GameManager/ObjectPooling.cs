@@ -8,11 +8,6 @@ public class ObjectPooling : Singleton<ObjectPooling>
     [SerializeField]
     Dictionary<GameObject, List<GameObject>> _pool = new Dictionary<GameObject, List<GameObject>>();
 
-    private void Awake()
-    {
-       
-    }
-
     public virtual GameObject GetObject(GameObject prefab)
     {
         List<GameObject> listObj = new List<GameObject>();

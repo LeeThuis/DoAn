@@ -11,7 +11,9 @@ public class UIManager : Singleton<UIManager>
     public Button _button;
     public Button _gameOver;
     public Text _scoreText;
+    public Text _yourPoint;
 
+    
 
     // Start is called before the first frame update
     void Start()
@@ -41,16 +43,19 @@ public class UIManager : Singleton<UIManager>
     public void GameOver()
     {
         _gameOver.gameObject.SetActive(true);
+        _yourPoint.text = GameManager.Instant.Kill.ToString();
         _gameOver.onClick.AddListener(RestartGame);
     }
 
-    private void RestartGame()
+    public void RestartGame()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(0);
     }
 
     public void UIScore(int score)
     {
         _scoreText.text = string.Format("total kills {0:00#}", score);
+        
     }
 }

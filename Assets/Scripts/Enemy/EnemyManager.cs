@@ -6,7 +6,6 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class EnemyManager : Singleton<EnemyManager>
 {
-    
     [SerializeField] float _minTimeSpawn, _maxTimeSpawn;
     [SerializeField] float _timer = 2f;
     [SerializeField] GameObject _enemyPrefab;
@@ -16,12 +15,6 @@ public class EnemyManager : Singleton<EnemyManager>
     public void Init()
     {
         coroutine = StartCoroutine(enemySpawner());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     IEnumerator enemySpawner()
@@ -43,7 +36,7 @@ public class EnemyManager : Singleton<EnemyManager>
         EnemyController e = ObjectPooling.Instant.GetComp<EnemyController>(_enemyPrefab);
         e.transform.position = pos;
         e.Init(100,50);
-        e._healthBar.UpdateHealthBar(100);
+        e.UpdateHealthBar(100);
         e.gameObject.SetActive(true);
         
     }

@@ -29,4 +29,13 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    private void Init()
+    {
+        _baseController.Init();
+    }
+
+    private void Start()
+    {
+        Init();
+    }
 }

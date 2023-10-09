@@ -24,7 +24,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         if(_instant != null && _instant.gameObject.GetInstanceID() != this.gameObject.GetInstanceID())
         {
-            //Debug.LogError("Singleton already exit " + _instant.gameObject.name);
+            Debug.LogError("Singleton already exit " + _instant.gameObject.name);
             Destroy(this.gameObject);
         }
         else

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class BulletBase : MonoBehaviour
@@ -9,6 +10,8 @@ public abstract class BulletBase : MonoBehaviour
     [SerializeField] public float _speed, _damage, _lifeTime;
 
     Vector2 _movement;
+
+    Coroutine _bulletLifeTime;
 
     private void Start()
     {
@@ -21,11 +24,16 @@ public abstract class BulletBase : MonoBehaviour
         this._lifeTime = lifeTime;
         this._movement = movement;
     }
-    private void Update()
+
+    private void OnEnable()
     {
-        this._lifeTime -= Time.deltaTime;
-        if (this._lifeTime < 0)
-            this.gameObject.SetActive(false);
+        _bulletLifeTime = StartCoroutine(LifeTime());
+    }
+    
+    IEnumerator LifeTime()
+    {
+        yield return new WaitForSeconds(this._lifeTime);
+        this.gameObject.SetActive(false);
     }
 
     private void FixedUpdate()
@@ -36,6 +44,16 @@ public abstract class BulletBase : MonoBehaviour
     public void Movement()
     {
         _rb.velocity = this._movement * _speed;
+    }
+
+    private void OnDisable()
+    {
+        _rb.velocity = Vector2.zero;
+
+        if(_bulletLifeTime != null )
+        {
+            StopCoroutine(_bulletLifeTime);
+        }
     }
 
     protected abstract void Boom(GameObject target);
