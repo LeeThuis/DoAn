@@ -38,7 +38,6 @@ public class EnemyController : EnemyManager , IGetHit
     void Update()
     {
         target();
-
     }
 
     public void target()
@@ -55,7 +54,6 @@ public class EnemyController : EnemyManager , IGetHit
             collision.gameObject.GetComponent<IGetHit>().GetHit(dmg);
             Invoke("SetActive", 1.5f);
         }
-        
     }
 
     public void GetHit(float dmg)

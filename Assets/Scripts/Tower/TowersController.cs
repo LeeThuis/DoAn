@@ -16,17 +16,6 @@ public class TowersController : MonoBehaviour
 
     [SerializeField] float _attackTimer = 1f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void FixedUpdate()
     {
         if (detectEnemy)
@@ -56,6 +45,7 @@ public class TowersController : MonoBehaviour
         _enemyPosition = collision.transform;
         detectEnemy = true;
     }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (!collision.gameObject.CompareTag("Enemy"))

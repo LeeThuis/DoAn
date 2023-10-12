@@ -31,15 +31,15 @@ public class TowersAnimation : AnimationManager
         {
             float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
             
-            if (distanceToEnemy < _radius)
+            if (distanceToEnemy <= _radius)
             {
                 shortestDistance = distanceToEnemy;
                 nearestEnemy = enemy;
 
                 Vector3 dir = enemy.transform.position - this.transform.position;
                 RaycastHit2D hit = Physics2D.Raycast(this.transform.position, dir, dir.magnitude);
-                _towersAnimator.SetFloat("LastMoveX", dir.normalized.x);
-                _towersAnimator.SetFloat("LastMoveY", dir.normalized.y);
+                _towersAnimator.SetFloat("LastMoveX", dir.x);
+                _towersAnimator.SetFloat("LastMoveY", dir.y);
             }
         }
     }

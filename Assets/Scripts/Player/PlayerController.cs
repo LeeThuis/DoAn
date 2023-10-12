@@ -44,7 +44,6 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         this.movement();
-        
     }
 
     public void movement()
@@ -71,8 +70,6 @@ public class PlayerController : MonoBehaviour
         {
             _gun.Fire();
         }
-
-        
     }
 
     public void SwitchGun(GunControllerBase newGun)

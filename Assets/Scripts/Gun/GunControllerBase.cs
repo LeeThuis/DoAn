@@ -32,5 +32,5 @@ public abstract class GunControllerBase : MonoBehaviour
         this._player = player;
     }
     public abstract void Fire();
-
+    
 }

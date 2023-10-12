@@ -245,7 +245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerState: 0
   _enemy: {fileID: 6100943691365763661, guid: 62913d55fdc3f094e852f227b03dc9d6, type: 3}
-  _radius: 10
+  _radius: 15
 --- !u!1 &11624504
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,6 +657,7 @@ GameObject:
   - component: {fileID: 248306298}
   - component: {fileID: 248306297}
   - component: {fileID: 248306296}
+  - component: {fileID: 248306300}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -750,6 +751,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &248306300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248306295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 405d8fe18acd6424584cc8bf3dd78944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _HpBar: {fileID: 982368384}
+  _textHpBar: {fileID: 425676943}
+  _button: {fileID: 1819382049}
+  _gameOver: {fileID: 1797954159}
+  _scoreText: {fileID: 11624506}
+  _yourPoint: {fileID: 220306555}
 --- !u!1 &332869838
 GameObject:
   m_ObjectHideFlags: 0
@@ -955,7 +974,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerState: 0
   _enemy: {fileID: 6100943691365763661, guid: 62913d55fdc3f094e852f227b03dc9d6, type: 3}
-  _radius: 10
+  _radius: 15
 --- !u!95 &448296521
 Animator:
   serializedVersion: 5
@@ -102004,13 +102023,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 840099208}
-  - component: {fileID: 840099207}
   - component: {fileID: 840099209}
   - component: {fileID: 840099210}
   - component: {fileID: 840099211}
-  - component: {fileID: 840099212}
   - component: {fileID: 840099213}
-  - component: {fileID: 840099214}
+  - component: {fileID: 840099215}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -102018,20 +102035,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &840099207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 840099206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 229a7ed9a00c48c41914c9b755c29a50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _baseController: {fileID: 1146751976}
-  _enemyManager: {fileID: 7945254722186327784, guid: 62913d55fdc3f094e852f227b03dc9d6, type: 3}
 --- !u!4 &840099208
 Transform:
   m_ObjectHideFlags: 0
@@ -102088,24 +102091,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e65ce29cfd542ef41b9dd1176a4895ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &840099212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 840099206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 405d8fe18acd6424584cc8bf3dd78944, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _HpBar: {fileID: 982368384}
-  _textHpBar: {fileID: 425676943}
-  _button: {fileID: 1819382049}
-  _gameOver: {fileID: 1797954159}
-  _scoreText: {fileID: 11624506}
-  _yourPoint: {fileID: 220306555}
 --- !u!212 &840099213
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -102158,7 +102143,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &840099214
+--- !u!114 &840099215
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102167,9 +102152,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 840099206}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a614f9007d3104a4884c30bf99c79dcf, type: 3}
+  m_Script: {fileID: 11500000, guid: 229a7ed9a00c48c41914c9b755c29a50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _baseController: {fileID: 1146751976}
+  _enemyManager: {fileID: 7945254722186327784, guid: 62913d55fdc3f094e852f227b03dc9d6, type: 3}
 --- !u!1 &857955332
 GameObject:
   m_ObjectHideFlags: 0
@@ -102405,7 +102392,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerState: 0
   _enemy: {fileID: 6100943691365763661, guid: 62913d55fdc3f094e852f227b03dc9d6, type: 3}
-  _radius: 10
+  _radius: 15
 --- !u!95 &995815228
 Animator:
   serializedVersion: 5
@@ -103292,7 +103279,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 840099212}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: RestartGame
         m_Mode: 1
@@ -103720,7 +103707,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerState: 0
   _enemy: {fileID: 6100943691365763661, guid: 62913d55fdc3f094e852f227b03dc9d6, type: 3}
-  _radius: 10
+  _radius: 15
 --- !u!1 &1900077707
 GameObject:
   m_ObjectHideFlags: 0
@@ -103812,7 +103799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _radius: 15
-  _damage: 10
+  _damage: 50
   _gunTown: {fileID: 182058246}
   _enemy: {fileID: 0}
   _timer: 1
@@ -104074,7 +104061,7 @@ PrefabInstance:
     - target: {fileID: 3366856792837628437, guid: 9e64952395251ca49a02d412cc0eeadc, type: 3}
       propertyPath: _bullet
       value: 
-      objectReference: {fileID: 1475108783280219583, guid: 6e61ab6c60dafef4c8fdef5a483b44bd, type: 3}
+      objectReference: {fileID: -4018978957619457145, guid: 6e61ab6c60dafef4c8fdef5a483b44bd, type: 3}
     - target: {fileID: 3366856792837628437, guid: 9e64952395251ca49a02d412cc0eeadc, type: 3}
       propertyPath: _damage
       value: 2

@@ -13,19 +13,11 @@ public class UIManager : Singleton<UIManager>
     public Text _scoreText;
     public Text _yourPoint;
 
-    
-
     // Start is called before the first frame update
     void Start()
     {
         _button.onClick.AddListener(StartGameBt);
         _gameOver.gameObject.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void setHealthBar(float value)
@@ -56,6 +48,5 @@ public class UIManager : Singleton<UIManager>
     public void UIScore(int score)
     {
         _scoreText.text = string.Format("total kills {0:00#}", score);
-        
     }
 }

@@ -20,6 +20,7 @@ public class BaseController : MonoBehaviour , IGetHit
 
     private void Start()
     {
+        Init();
         _baseRenderer = this.GetComponentInChildren<SpriteRenderer>();
     }
 
@@ -75,7 +76,6 @@ public class BaseController : MonoBehaviour , IGetHit
         if (this._Hp <= 0)
         {
             Time.timeScale = 0f;
-            //Observer.Instant.AddListener("EndGame", null);
             UIManager.Instant.GameOver();
         }
     }

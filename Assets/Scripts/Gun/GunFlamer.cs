@@ -5,7 +5,7 @@ using UnityEngine.Animations;
 
 public class GunFlamer : GunControllerBase
 {
-    [SerializeField] protected GameObject _bullet;
+    [SerializeField] private BulletBase _bullet;
 
     [SerializeField] int numberBullet;
     public override void Fire()
@@ -18,7 +18,7 @@ public class GunFlamer : GunControllerBase
             dir.x = Mathf.Cos(angle * Mathf.Deg2Rad);
             dir.y = Mathf.Sin(angle * Mathf.Deg2Rad);
 
-            BulletBase g = ObjectPooling.Instant.GetComp<BulletBase>(_bullet);
+            BulletBase g = ObjectPooling.Instant.GetComp<BulletBase>(_bullet.gameObject);
             float rot = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             g.transform.rotation = Quaternion.Euler(0f, 0f, rot);
             g.transform.position = _gun.transform.position;

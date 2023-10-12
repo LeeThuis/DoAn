@@ -38,7 +38,6 @@ public class EnemyManager : Singleton<EnemyManager>
         e.Init(100,50);
         e.UpdateHealthBar(100);
         e.gameObject.SetActive(true);
-        
     }
 
     private void OnDisable()

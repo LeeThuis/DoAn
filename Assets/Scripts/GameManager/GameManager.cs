@@ -7,9 +7,8 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private BaseController _baseController;
     public BaseController BaseController => _baseController;
 
-
     [SerializeField] private EnemyManager _enemyManager;
-    public EnemyManager EnemyManager => _enemyManager;
+    public EnemyManager _nemyManager => _enemyManager;
 
     private int _kill = 0;
 
@@ -27,15 +26,5 @@ public class GameManager : Singleton<GameManager>
 
             UIManager.Instant.UIScore(_kill);
         }
-    }
-
-    private void Init()
-    {
-        _baseController.Init();
-    }
-
-    private void Start()
-    {
-        Init();
     }
 }

@@ -22,12 +22,13 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     }
     private void Awake()
     {
-        if(_instant != null && _instant.gameObject.GetInstanceID() != this.gameObject.GetInstanceID())
+        if (_instant != null && _instant.GetInstanceID() != this.GetComponent<T>().GetInstanceID())
         {
             Debug.LogError("Singleton already exit " + _instant.gameObject.name);
-            Destroy(this.gameObject);
+            Destroy(this.GetComponent<T>());
         }
         else
             _instant = this.GetComponent<T>();
+
     }
 }

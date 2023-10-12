@@ -36,10 +36,7 @@ public class TowerGunCannon : MonoBehaviour
         {
             _enemy = nearestEnemy.transform;
         }
-        //else
-        //{
-        //    _enemy = null;
-        //}
+
         Vector2 dir = _enemy.transform.position - cannon.transform.position;
         float rot = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         cannon.transform.rotation = Quaternion.Euler(0f, 0f, rot);
