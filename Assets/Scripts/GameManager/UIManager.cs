@@ -22,6 +22,7 @@ public class UIManager : Singleton<UIManager>
     {
         _button.onClick.AddListener(StartGameBt);
         _gameOver.gameObject.SetActive(false);
+        HighScore();
     }
 
     public void setHealthBar(float value)
