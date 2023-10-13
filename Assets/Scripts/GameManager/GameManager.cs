@@ -25,6 +25,20 @@ public class GameManager : Singleton<GameManager>
             _kill = value;
 
             UIManager.Instant.UIScore(_kill);
+            CheckHighScore();
+        }
+    }
+
+    private void Start()
+    {
+        UIManager.Instant.HighScore();
+    }
+
+    private void CheckHighScore()
+    {
+        if (_kill > PlayerPrefs.GetInt("HighScore", 0))
+        {
+            PlayerPrefs.SetInt("HighScore", _kill);
         }
     }
 }

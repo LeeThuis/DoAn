@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class UIManager : Singleton<UIManager>
 {
     public Slider _HpBar;
-    public Text _textHpBar;
+    
     public Button _button;
     public Button _gameOver;
+
+    public Text _textHpBar;
     public Text _scoreText;
     public Text _yourPoint;
+    public Text _highScoreText;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +39,7 @@ public class UIManager : Singleton<UIManager>
     public void GameOver()
     {
         _gameOver.gameObject.SetActive(true);
-        _yourPoint.text = GameManager.Instant.Kill.ToString();
+        _yourPoint.text =  string.Format("Your Point {0:00#}", GameManager.Instant.Kill.ToString());
         _gameOver.onClick.AddListener(RestartGame);
     }
 
@@ -48,5 +52,11 @@ public class UIManager : Singleton<UIManager>
     public void UIScore(int score)
     {
         _scoreText.text = string.Format("total kills {0:00#}", score);
+        //PlayerPrefs.SetInt("HighScore", score);
+    }
+
+    public void HighScore()
+    {
+        _highScoreText.text = $"HighScore: {PlayerPrefs.GetInt("HighScore", 0)}";
     }
 }
