@@ -29,10 +29,6 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    //private void Start()
-    //{
-    //    UIManager.Instant.HighScore();
-    //}
 
     private void CheckHighScore()
     {
